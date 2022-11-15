@@ -1,4 +1,3 @@
-#Μαγγιώρος Σπύρος AM : 03121834
 import os
 import sys
 sys.path
