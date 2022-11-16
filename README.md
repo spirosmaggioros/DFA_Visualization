@@ -8,5 +8,6 @@ use :
 2) chmod +x dfa_create
 3) ./dfa_create
 
-Windows:
+Windows
+use :
 Double-Click the executable file
