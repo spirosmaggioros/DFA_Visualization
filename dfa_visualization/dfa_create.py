@@ -33,7 +33,7 @@ def dfa_creation():
     print("# q3  q0       q2")
     print("#")
     print("# εμέις θα πρέπει με την σειρά(Για ευκολία) να δώσουμε")
-    print("# q1 q2 q3 q0 q4 .... q2(με εντερ μετα απο κάθε κατάσταση λόγω του ότι η python δεν υποστηρίζει λειτουργίες όπως του cin της c++)")
+    print("# q1 q2 q3 q0 q4 .... q2")
     print("#")
 
     for i in range(len(temp_1)):
