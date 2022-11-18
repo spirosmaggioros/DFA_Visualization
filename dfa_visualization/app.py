@@ -42,7 +42,7 @@ def nfa_creation():
     for i in range(len(temp_1)):
         foo = {}
         for j in range(len(temp_2)):
-            print(temp_2[j]," -> ", temp_1[i])
+            print(temp_1[i]," -> ", temp_2[j])
             uio = input()
             foo[temp_2[j]] = uio
         delta[temp_1[i]] = foo
@@ -53,6 +53,9 @@ def nfa_creation():
     F = set(input("Πληκτρολογήστε τις τελικές καταστάσεις με κενό ενδιάμεσα και έπειτα πατήστε εντερ\n").split())
 
     automata1 = NFA(Q, sigma , delta , initialState, F)
+
+    if(automata1.isValid()):
+        print("NFA Accepted")
 
     #print(automata1.isValid())#προφανώς επιστρέφει True
 
@@ -100,7 +103,7 @@ def dfa_creation():
     for i in range(len(temp_1)):
         foo = {}
         for j in range(len(temp_2)):
-            print(temp_2[j] , "->", temp_1[i])
+            print(temp_1[i] , "->", temp_2[j])
             uio = input()
             foo[temp_2[j]] = uio
         delta[temp_1[i]] = foo
@@ -111,6 +114,9 @@ def dfa_creation():
     F = set(input("Πληκτρολογήστε τις τελικές καταστάσεις με κενό ενδιάμεσα και έπειτα πατήστε εντερ\n").split())
 
     automata1 = DFA(Q, sigma , delta , initialState, F)
+
+    if(automata1.isValid()):
+        print("DFA Accepted!")
 
     #print(automata1.isValid())#προφανώς επιστρέφει True
 
@@ -126,4 +132,14 @@ def dfa_creation():
     imgplot = plt.imshow(img)
     plt.show()
 
+
+while(True):
+      a = input("for DFA type : DFA , for NFA type : NFA , for exit type : END\n")
+      match a:
+        case "DFA":
+          dfa_creation()
+        case "NFA":
+          nfa_creation()
+        case "END":
+          exit(0)
 
