@@ -1,1 +1,2 @@
-from dfa_create import dfa_creation
+from app import dfa_creation
+from app import nfa_creation
