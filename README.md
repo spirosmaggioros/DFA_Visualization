@@ -5,8 +5,8 @@ Download : [here](https://github.com/spirosmaggioros/DFA_Visualization/releases/
 Linux/MacOS
 use :
 1) Αρχικά Πρέπει να βρισκόμαστε στο directory που υπάρχει το executable file(cd Downloads για τους περισσότερους)
-2) pip install automathon(ή brew install automathon)
-3) pip install graphviz(ή brew install graphviz)
+2) pip3 install automathon(ή brew install automathon για macos)
+3) pip3 install graphviz(ή brew install graphviz για macos)
 4) chmod +x dfa_create
 5) ./dfa_create
 
