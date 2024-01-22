@@ -21,6 +21,7 @@ def dfa_creation():
 
     print(sigma)
     delta = {}
+    delta2 = {}
 
     temp_1 = list(Q)
     temp_2 = list(sigma)
