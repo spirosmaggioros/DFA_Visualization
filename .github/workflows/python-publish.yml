@@ -32,7 +32,7 @@ jobs:
 
     - name: Check if version exists
       run : |
-        VERSION = $(python setup.py --version)
+        echo "VERSION = $(python setup.py --version)"
         echo "::set-output name=version::$VERSION"
         pip install --upgrade pip
         if curl -s https://pypi.org/pypi/dfa-visual-demo/json | jq -e ".releases" | has(\"$VERSION\")"; then
