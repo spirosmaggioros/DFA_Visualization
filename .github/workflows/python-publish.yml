@@ -19,6 +19,8 @@ jobs:
     permissions:
         id-token: write
     steps:
+    - name: Checkout repo
+      uses: actions/checkout@v2
     - name: download dependencies
       run: pip3 install twine 
     - name: basic configuration
