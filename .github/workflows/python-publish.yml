@@ -1,32 +1,39 @@
 name: Upload Python Package
-# PyPI token available and set
+
 on:
-    push:
-        branches: [ "main" ]
-    release:
-      types: [published]
-  
+  push:
+    branches: [ "main" ]
+  release:
+    types: [published]
+
 permissions:
   contents: read
 
 jobs:
   pypi-publish:
-
-    name: upload releash to PyPI
+    name: upload release to PyPI
     runs-on: macos-latest
 
     steps:
     - name: Checkout repo
       uses: actions/checkout@v2
+
     - name: set python version
       uses: actions/setup-python@v3
       with:
         python-version: '3.x'
+
     - name: download dependencies
-      run: pip3 install setuptools --break-system-packages && pip3 install twine --break-system-packages && python3 -m pip install -U keyring keyrings.alt --break-system-packages
-    - name: basic configuration
-      run: python3 setup.py sdist && twine upload dist/*
+      run: |
+        pip install setuptools
+        pip install twine
+        pip install keyring keyrings.alt
+
+    - name: build package
+      run: python setup.py sdist
+
     - name: Publish package
-      uses: pypa/gh-action-pypi-publish@master
-      with:
-        password: ${{ secrets.PYPI_API_TOKEN }}
+      env:
+        TWINE_USERNAME: __token__
+        TWINE_PASSWORD: ${{ secrets.PYPI_API_TOKEN }}
+      run: twine upload dist/*
