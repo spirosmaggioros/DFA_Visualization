@@ -24,7 +24,7 @@ jobs:
     - name: Checkout repo
       uses: actions/checkout@v2
     - name: download dependencies
-      run: pip3 install twine --break-system-packages && python3 -m pip install -U keyring keyrings.alt --break-system-packages
+      run: pip3 install setuptools --break-system-packages && pip3 install twine --break-system-packages && python3 -m pip install -U keyring keyrings.alt --break-system-packages
     - name: basic configuration
       run: python3 setup.py sdist bdist_wheel && twine upload dist/*
     - name: publish package to pypi
