@@ -1,4 +1,4 @@
-print("App by Maggioros Spiros")
+print("Script by Maggioros Spiros")
 import os
 import sys
 sys.path
