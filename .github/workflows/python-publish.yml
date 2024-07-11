@@ -8,6 +8,7 @@ on:
 
 permissions:
   contents: read
+  id-token: write  # Allow GitHub to mint tokens
 
 jobs:
   pypi-publish:
@@ -18,19 +19,19 @@ jobs:
     - name: Checkout repo
       uses: actions/checkout@v2
 
-    - name: set python version
+    - name: Set up Python
       uses: actions/setup-python@v3
       with:
         python-version: '3.x'
 
-    - name: download dependencies
+    - name: Install dependencies
       run: |
         pip install setuptools
         pip install twine
-        pip install keyring keyrings.alt
+        pip install wheel
 
-    - name: build package
-      run: python setup.py sdist
+    - name: Build package
+      run: python setup.py sdist bdist_wheel
 
     - name: Publish package
       env:
