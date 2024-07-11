@@ -25,6 +25,7 @@ jobs:
         pip install setuptools
         pip install twine
         pip install wheel
+        sudo apt-get install jq
 
     - name: Clean previous builds
       run: rm -rf dist
