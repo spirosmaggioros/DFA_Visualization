@@ -27,7 +27,6 @@ jobs:
     - name: basic configuration
       run: python3 setup.py sdist && twine upload dist/*
     - name: Publish package
-      uses: pypa/gh-action-pypi-publish@27b31702a0e7fc50959f5ad993c78deac1bdfc29
+      uses: pypa/gh-action-pypi-publish@master
       with:
-        user: __token__
         password: ${{ secrets.PYPI_API_TOKEN }}
