@@ -35,8 +35,9 @@ jobs:
         VERSION = $(python setup.py --version)
         echo "::set-output name=version::$VERSION"
         pip install --upgrade pip
-        if 
-          [[ $(pip search dfa-visual-demo | grep $VERSION)]]; then echo "Version already exists. Exiting..." exit 1 
+        if curl -s https://pypi.org/pypi/dfa-visual-demo/json | jq -e ".releases" | has(\"$VERSION\")"; then
+          echo "Version already exists. Aborting now..."
+          exit 1
         fi
 
     - name: Build package
