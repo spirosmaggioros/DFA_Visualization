@@ -29,6 +29,15 @@ jobs:
     - name: Clean previous builds
       run: rm -rf dist
 
+    - name: Check if version exists
+      run : |
+        VERSION = $ (python setup.py --version)
+        echo "::set-output name=version::$VERSION"
+        pip install --upgrade pip
+        if 
+          [[ $(pip search dfa-visual-demo | grep $VERSION)]]; then echo "Version already exists. Exiting..." exit 1 
+        fi
+
     - name: Build package
       run: python setup.py sdist bdist_wheel
 
