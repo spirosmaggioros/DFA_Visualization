@@ -19,5 +19,9 @@ jobs:
     permissions:
         id-token: write
     steps:
+    - name: download dependencies
+      run: pip3 install twine 
+    - name: basic configuration
+      run: python setup.py sdist && twine upload dist/*
     - name: publish package to pypi
       uses: pypa/gh-action-pypi-publish@release/v1
