@@ -31,7 +31,7 @@ jobs:
 
     - name: Check if version exists
       run : |
-        VERSION = $ (python setup.py --version)
+        VERSION = $(python setup.py --version)
         echo "::set-output name=version::$VERSION"
         pip install --upgrade pip
         if 
