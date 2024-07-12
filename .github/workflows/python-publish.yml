@@ -29,17 +29,6 @@ jobs:
 
     - name: Clean previous builds
       run: rm -rf dist
-
-    - name: Check if version exists
-      id: check_version
-      run: |
-        echo "CURR_VERSION=1.0.2"
-        echo "VERSION=$(python setup.py --version)"
-        pip install --upgrade pip
-        if [ "$CURR_VERSION == $VERSION" ]; then
-          echo "Version already exists. Aborting now..."
-          exit 1
-        fi
   
     - name: Build package
       run: python setup.py sdist bdist_wheel
