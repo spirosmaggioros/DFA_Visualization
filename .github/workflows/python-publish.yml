@@ -30,14 +30,6 @@ jobs:
     - name: Clean previous builds
       run: rm -rf dist
 
-    - name: Check if version exists
-      run : |
-        echo "VERSION = $(python setup.py --version)"
-        if curl -s https://pypi.org/pypi/dfa-visual-demo/json | jq -e ".releases | has(\"$VERSION\")"; then
-          echo "Version already exists. Aborting now..."
-          exit 1
-        fi
-
     - name: Build package
       run: python setup.py sdist bdist_wheel
 
@@ -46,3 +38,5 @@ jobs:
         TWINE_USERNAME: __token__
         TWINE_PASSWORD: ${{ secrets.PYPI_API_TOKEN }}
       run: twine upload --verbose dist/*
+    - if: failure()
+      run: echo "Version already exists. Aborting ..."
