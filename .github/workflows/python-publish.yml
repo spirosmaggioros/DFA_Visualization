@@ -1,6 +1,6 @@
 name: Upload Python Package
 
-on: [ "push" ]
+on: workflow_dispatch
 
 permissions:
   contents: read
@@ -40,7 +40,7 @@ jobs:
           echo "Version already exists. Aborting now..."
           exit 1
         fi
-
+  
     - name: Build package
       run: python setup.py sdist bdist_wheel
 
