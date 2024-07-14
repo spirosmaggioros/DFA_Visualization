@@ -1,3 +1,9 @@
+"""@package docstring
+Documentation for this module.
+ 
+More details.
+"""
+
 print("Script by Maggioros Spiros")
 import os
 import sys
@@ -9,6 +15,9 @@ import matplotlib.image as mpimg
 from automathon import NFA
 
 def dfa_creation():
+    """
+       dfa_creation function
+    """
     Q = set(input("Πληκτρολογήστε τις καταστάσεις με κενό ενδιάμεσα και έπειτα πατήστε εντερ\n").split())
 
     Q = sorted(Q)
@@ -71,6 +80,9 @@ def dfa_creation():
 
     
 def nfa_creation():
+    """
+        nfa_creation function
+    """
     Q = set(input("Πληκτρολογήστε τις καταστάσεις με κενό ενδιάμεσα και έπειτα πατήστε εντερ\n").split())
 
     Q = sorted(Q)
