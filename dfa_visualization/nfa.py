@@ -59,5 +59,5 @@ def nfa_creation():
     imgplot = plt.imshow(img)
     plt.show()
     
-   while(true):
-    nfa_creation()
+#   while(true):
+#    nfa_creation()
