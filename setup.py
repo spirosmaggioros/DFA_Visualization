@@ -1,9 +1,7 @@
-from setuptools import setup, find_packages
-import codecs 
-import os
+from setuptools import find_packages, setup
 
-VERSION = '1.0.3'
-DESCRIPTION = 'A basic DFA/NFA visualization tool only for homework purposes'
+VERSION = "1.0.3"
+DESCRIPTION = "A basic DFA/NFA visualization tool only for homework purposes"
 
 setup(
     name="DFA-visual-demo",
@@ -11,5 +9,5 @@ setup(
     author="Spiros Maggioros",
     author_email="<spirosmag@ieee.org>",
     description=DESCRIPTION,
-    packages=find_packages()
+    packages=find_packages(),
 )
