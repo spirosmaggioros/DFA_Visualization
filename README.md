@@ -8,7 +8,7 @@ use :
 2) pip3 install automathon(ή brew install automathon για macos)
 3) pip3 install graphviz(ή brew install graphviz για macos)
 4) chmod +x dfa_create
-5) ./dfa_create
+5) ./dfa_createsdasdasda
 
 Windows
 use :
