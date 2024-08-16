@@ -1,0 +1,10 @@
+LICENCE.txt
+README.md
+setup.py
+DFA_visual_demo.egg-info/PKG-INFO
+DFA_visual_demo.egg-info/SOURCES.txt
+DFA_visual_demo.egg-info/dependency_links.txt
+DFA_visual_demo.egg-info/top_level.txt
+dfa_visualization/__init__.py
+dfa_visualization/app.py
+dfa_visualization/nfa.py

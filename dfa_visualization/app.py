@@ -1,4 +1,10 @@
-print("App by Maggioros Spiros")
+"""@package docstring
+Documentation for this module.
+ 
+More details.
+"""
+
+print("Script by Maggioros Spiros")
 import os
 import sys
 sys.path
@@ -9,6 +15,17 @@ import matplotlib.image as mpimg
 from automathon import NFA
 
 def dfa_creation():
+    """[Summary]
+
+    :param [ParamName]: [ParamDescription], defaults to [DefaultParamVal]
+    :type [ParamName]: [ParamType](, optional)
+    ...
+    :raises [ErrorType]: [ErrorDescription]
+    ...
+    :return: [ReturnDescription]
+    :rtype: [ReturnType]
+    """  
+
     Q = set(input("Πληκτρολογήστε τις καταστάσεις με κενό ενδιάμεσα και έπειτα πατήστε εντερ\n").split())
 
     Q = sorted(Q)
@@ -71,6 +88,9 @@ def dfa_creation():
 
     
 def nfa_creation():
+    """
+        nfa_creation function
+    """
     Q = set(input("Πληκτρολογήστε τις καταστάσεις με κενό ενδιάμεσα και έπειτα πατήστε εντερ\n").split())
 
     Q = sorted(Q)
@@ -131,13 +151,15 @@ def nfa_creation():
     imgplot = plt.imshow(img)
     plt.show()
 
-while(True):
-      a = input("for DFA type : DFA , for NFA type : NFA , for exit type : END\n")
-      match a:
-        case "DFA":
-          dfa_creation()
-        case "NFA":
-          nfa_creation()
-        case "END":
-          exit(0)
+#while(True):
+#      a = input("for DFA type : DFA , for NFA type : NFA , for exit type : END\n")
+#      match a:
+#        case "DFA":
+#          dfa_creation()
+#        case "NFA":
+#          nfa_creation()
+#        case "END":
+#          exit(0)
+#
+
 

@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+
+<html lang="en" data-content_root="../../">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>dfa_visualization.nfa &#8212; DFA-Visualization 2024 documentation</title>
+    <link rel="stylesheet" type="text/css" href="../../_static/pygments.css?v=d1102ebc" />
+    <link rel="stylesheet" type="text/css" href="../../_static/alabaster.css?v=12dfc556" />
+    <script src="../../_static/documentation_options.js?v=6fefd858"></script>
+    <script src="../../_static/doctools.js?v=9a2dae69"></script>
+    <script src="../../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" />
+   
+  <link rel="stylesheet" href="../../_static/custom.css" type="text/css" />
+  
+
+  
+  
+
+  </head><body>
+  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          
+
+          <div class="body" role="main">
+            
+  <h1>Source code for dfa_visualization.nfa</h1><div class="highlight"><pre>
+<div class="viewcode-block" id="nfa_creation">
+<a class="viewcode-back" href="../../dfa_visualization.html#dfa_visualization.nfa.nfa_creation">[docs]</a>
+<span></span><span class="k">def</span> <span class="nf">nfa_creation</span><span class="p">():</span>
+    <span class="n">Q</span> <span class="o">=</span> <span class="nb">set</span><span class="p">(</span><span class="nb">input</span><span class="p">(</span><span class="s2">&quot;Πληκτρολογήστε τις καταστάσεις με κενό ενδιάμεσα και έπειτα πατήστε εντερ</span><span class="se">\n</span><span class="s2">&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">split</span><span class="p">())</span>
+
+    <span class="n">Q</span> <span class="o">=</span> <span class="nb">sorted</span><span class="p">(</span><span class="n">Q</span><span class="p">)</span>
+
+    <span class="nb">print</span><span class="p">(</span><span class="n">Q</span><span class="p">)</span>
+
+    <span class="n">sigma</span> <span class="o">=</span> <span class="nb">set</span><span class="p">(</span><span class="nb">input</span><span class="p">(</span><span class="s2">&quot;πληκτρολογήστε τα στοιχεία του αλφαβήτου με κενό ενδιάμεσα απο κάθε χαραχτήρα και έπειτα πατήστε εντερ</span><span class="se">\n</span><span class="s2">&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">split</span><span class="p">())</span>
+
+    <span class="n">sigma</span> <span class="o">=</span> <span class="nb">sorted</span><span class="p">(</span><span class="n">sigma</span><span class="p">)</span>
+
+    <span class="nb">print</span><span class="p">(</span><span class="n">sigma</span><span class="p">)</span>
+    <span class="n">delta</span> <span class="o">=</span> <span class="p">{}</span>
+
+    <span class="n">temp_1</span> <span class="o">=</span> <span class="nb">list</span><span class="p">(</span><span class="n">Q</span><span class="p">)</span>
+    <span class="n">temp_2</span> <span class="o">=</span> <span class="nb">list</span><span class="p">(</span><span class="n">sigma</span><span class="p">)</span>
+
+    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Δώστε τα transitions με την σειρά που έχετε στον πίνακα καταστάσεων σας</span><span class="se">\n</span><span class="s2">&quot;</span><span class="p">)</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;# π.χ έστω ο παρακάτω πίνακας&quot;</span><span class="p">)</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;#      a       b&quot;</span><span class="p">)</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;# q0  q1       q2&quot;</span><span class="p">)</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;# q1  q3       q0&quot;</span><span class="p">)</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;# q2  q4       q1&quot;</span><span class="p">)</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;# q3  q0       q2&quot;</span><span class="p">)</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;#&quot;</span><span class="p">)</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;# εμέις θα πρέπει με την σειρά(Για ευκολία) να δώσουμε&quot;</span><span class="p">)</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;# q1 q2 q3 q0 q4 .... q2&quot;</span><span class="p">)</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;#&quot;</span><span class="p">)</span>
+
+    <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">temp_1</span><span class="p">)):</span>
+        <span class="n">foo</span> <span class="o">=</span> <span class="p">{}</span>
+        <span class="k">for</span> <span class="n">j</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">temp_2</span><span class="p">)):</span>
+            <span class="nb">print</span><span class="p">(</span><span class="n">temp_1</span><span class="p">[</span><span class="n">i</span><span class="p">],</span><span class="s2">&quot; -&gt; &quot;</span><span class="p">,</span> <span class="n">temp_2</span><span class="p">[</span><span class="n">j</span><span class="p">])</span>
+            <span class="n">uio</span> <span class="o">=</span> <span class="nb">input</span><span class="p">()</span>
+            <span class="n">foo</span><span class="p">[</span><span class="n">temp_2</span><span class="p">[</span><span class="n">j</span><span class="p">]]</span> <span class="o">=</span> <span class="n">uio</span>
+        <span class="n">delta</span><span class="p">[</span><span class="n">temp_1</span><span class="p">[</span><span class="n">i</span><span class="p">]]</span> <span class="o">=</span> <span class="n">foo</span>
+
+    <span class="n">pro</span> <span class="o">=</span> <span class="nb">input</span><span class="p">(</span><span class="s2">&quot;Δώστε την αρχική κατάσταση , :&quot;</span><span class="p">)</span>
+    <span class="n">initialState</span> <span class="o">=</span> <span class="n">pro</span>
+
+    <span class="n">F</span> <span class="o">=</span> <span class="nb">set</span><span class="p">(</span><span class="nb">input</span><span class="p">(</span><span class="s2">&quot;Πληκτρολογήστε τις τελικές καταστάσεις με κενό ενδιάμεσα και έπειτα πατήστε εντερ</span><span class="se">\n</span><span class="s2">&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">split</span><span class="p">())</span>
+
+    <span class="n">automata1</span> <span class="o">=</span> <span class="n">NFA</span><span class="p">(</span><span class="n">Q</span><span class="p">,</span> <span class="n">sigma</span> <span class="p">,</span> <span class="n">delta</span> <span class="p">,</span> <span class="n">initialState</span><span class="p">,</span> <span class="n">F</span><span class="p">)</span>
+
+    <span class="k">if</span><span class="p">(</span><span class="n">automata1</span><span class="o">.</span><span class="n">isValid</span><span class="p">()):</span>
+        <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;NFA Accepted&quot;</span><span class="p">)</span>
+
+    <span class="c1">#print(automata1.isValid())#προφανώς επιστρέφει True</span>
+
+    <span class="c1">#μπορούμε επίσης να ελέγξουμε καταστάσεις</span>
+    <span class="c1">#print(automata1.accept(&quot;001010&quot;))#True αν δέχεται , False αλλιώς</span>
+
+    <span class="c1">#μπορούμε να πάρουμε και το συμπλήρωμα μιάς γλώσσας ώς εξής</span>
+    <span class="c1">#automata1.complement()</span>
+
+    <span class="n">automata1</span><span class="o">.</span><span class="n">view</span><span class="p">(</span><span class="s2">&quot;MyNFA&quot;</span><span class="p">)</span><span class="c1">#graph του DFA</span>
+
+    <span class="n">img</span> <span class="o">=</span> <span class="n">mpimg</span><span class="o">.</span><span class="n">imread</span><span class="p">(</span><span class="s1">&#39;MyNFA.gv.png&#39;</span><span class="p">)</span>
+    <span class="n">imgplot</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">imshow</span><span class="p">(</span><span class="n">img</span><span class="p">)</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span></div>
+
+    
+<span class="c1">#   while(true):</span>
+<span class="c1">#    nfa_creation()</span>
+</pre></div>
+
+          </div>
+          
+        </div>
+      </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper">
+<h1 class="logo"><a href="../../index.html">DFA-Visualization</a></h1>
+
+
+
+
+
+
+
+
+<h3>Navigation</h3>
+<p class="caption" role="heading"><span class="caption-text">Contents:</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../modules.html">dfa_visualization</a></li>
+</ul>
+
+<div class="relations">
+<h3>Related Topics</h3>
+<ul>
+  <li><a href="../../index.html">Documentation overview</a><ul>
+  <li><a href="../index.html">Module code</a><ul>
+  </ul></li>
+  </ul></li>
+</ul>
+</div>
+<search id="searchbox" style="display: none" role="search">
+  <h3 id="searchlabel">Quick search</h3>
+    <div class="searchformwrapper">
+    <form class="search" action="../../search.html" method="get">
+      <input type="text" name="q" aria-labelledby="searchlabel" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false"/>
+      <input type="submit" value="Go" />
+    </form>
+    </div>
+</search>
+<script>document.getElementById('searchbox').style.display = "block"</script>
+
+
+
+
+
+
+
+
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="footer">
+      &#169;2024, Spiros Maggioros.
+      
+      |
+      Powered by <a href="https://www.sphinx-doc.org/">Sphinx 7.3.7</a>
+      &amp; <a href="https://alabaster.readthedocs.io">Alabaster 0.7.16</a>
+      
+    </div>
+
+    
+
+    
+  </body>
+</html>
