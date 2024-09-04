@@ -22,9 +22,9 @@ jobs:
 
     - name: Install dependencies
       run: |
-        pip install setuptools
-        pip install twine
-        pip install wheel
+        pip install setuptools --break-system-packages
+        pip install twine --break-system-packages
+        pip install wheel --break-system-packages
         sudo apt-get install jq
 
     - name: Clean previous builds
