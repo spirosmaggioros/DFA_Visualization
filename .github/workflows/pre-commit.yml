@@ -11,7 +11,7 @@ jobs:
     steps:
       - uses: actions/checkout@v4
       - uses: actions/setup-python@v5
-      - run: pip3 install pre-commit
+      - run: pip3 install pre-commit --break-system-packages
       - run: pre-commit run --files *
 
   
