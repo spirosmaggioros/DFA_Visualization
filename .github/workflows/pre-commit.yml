@@ -9,7 +9,7 @@ jobs:
   pre-commit:
     runs-on: macos-latest
     steps:
-      - uses: actions/checkout@v4
+      - uses: actions/checkout@v6
       - uses: actions/setup-python@v5
       - run: pip3 install pre-commit --break-system-packages
       - run: pre-commit run --files *
